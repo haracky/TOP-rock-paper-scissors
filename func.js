@@ -33,24 +33,61 @@ function playRound(playerSelection, computerSelection) {
     /// plays round of Rock, Paper, Scissors and returns winned
 
     if ((playerSelection == 'rock') && (computerSelection == 'paper')) {
-        return 'Computer wins, Paper beats Rock'
+        console.log('Computer wins, Paper beats Rock');
+        return 'computer';
     }
     else if ((playerSelection == 'rock') && (computerSelection == 'scissors')) {
-        return 'Player wins, Rock beats Scissors'
+        console.log('Player wins, Rock beats Scissors');
+        return 'player';
     }
     else if ((playerSelection == 'paper') && (computerSelection == 'rock')) {
-        return 'Player wins, Paper beats rock'
+        console.log('Player wins, Paper beats Rock');
+        return 'player';
     }
     else if ((playerSelection == 'paper') && (computerSelection == 'scissors')) {
-        return 'Computer wins, Scissors beats paper'
+        console.log('Computer wins, Scissors beats Paper');
+        return 'computer';
     }
     else if ((playerSelection == 'scissors') && (computerSelection == 'rock')) {
-        return 'Computer wins, Rock beats Scissors'
+        console.log('Computer wins, Rock beats Scissors');
+        return 'computer';
     }
     else if ((playerSelection == 'scissors') && (computerSelection == 'paper')) {
-        return 'Player wins, Scissors beats Paper'
+        console.log('Player wins, Scissors beats Paper');
+        return 'player';
     }
     
-    return `TIE ${playerSelection}, ${computerSelection}`;
+    console.log(`TIE ${playerSelection}, ${computerSelection}`);
+    return 'tie';
 
+}
+
+
+function game() {
+    // plays 5 games of RPS Player vs Computer
+    // counts score and report a winner
+
+    let playerScore = 0;
+    let computerScore = 0;
+
+    for (let i = 0; i < 5; i++) {
+        
+        result = playRound(getPlayerChoice(), getComputerChoice());
+        
+        if (result == 'player') {
+            playerScore += 1;
+        }
+        else if (result == 'computer') {
+            computerScore += 1;
+        }
+
+        console.log(`Player: ${playerScore} - ${computerScore} Computer`);
+    }
+    if (playerScore > computerScore){
+        console.log(`Player wins!!!\nPlayer: ${playerScore} - ${computerScore} Computer`);
+    }
+    else if (playerScore < computerScore){
+        console.log(`Computer wins!!!\nPlayer: ${playerScore} - ${computerScore} Computer`);
+    }
+    else console.log(`TIE!!!\nPlayer: ${playerScore} - ${computerScore} Computer`);
 }
